@@ -1,17 +1,48 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2> {{ name }} </h2>
+  <div>
+    <button @click="changeName" > Change Name !</button>
+  </div>
+
+
+  <h2>{{ count }}</h2>
+<!-- with inline methods -->
+  <!-- <div>
+    <button v-on:click="count++" >Increment</button>
+    <button v-on:click="count--" >Decrement</button>
+  </div> -->
+
+  <!-- with methods -->
+  <div>
+    <button @click="increment(2, $event)" >Increment</button>
+    <button @click="decrement(2)" >Decrement</button>
+  </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return{
+      name: 'kavin sebastian',
+      count: 0
+    }
+  },
+  methods:{
+    increment(num, event){
+      this.count += num
+      console.log(event.target)
+    },
+    decrement(){
+      this.count -= 1
+    },
+    changeName(e){
+      console.log(e)
+    }
+
   }
 }
 </script>
